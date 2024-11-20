@@ -20,30 +20,29 @@ while(res == 1):
     res = pergunta()
 
 def mostrar():
-    print('{:<10}{:<10}{:<10}{:<10}{:<10}'.format('N°','Nome','Idade','Cargo','Salário'))
-    y = 1
+    print('{:<15}{:<15}{:<15}{:<15}{:<15}'.format('N°','Nome','Idade','Cargo','Salário'))
+    y = 0
     for x in cadastro:
-        print('{:<10}{:<10}{:<10}{:<10}{:<10}'.format(y,x.get_nome(), x.get_idade(), x.get_cargo(), x.get_salario()))
+        print('{:<15}{:<15}{:<15}{:<15}{:<15}'.format(y,x.get_nome(), x.get_idade(), x.get_cargo(), x.get_salario()))
         y+=1
-    
-def alterar(indice,novo_atributo):
-    if indice == 0:
-        cadastro[indice].set_nome(novo_atributo)
-    if indice == 1:
-        cadastro[indice].set_idade(novo_atributo)
-    if indice == 2:
-        cadastro[indice].set_cargo(novo_atributo)
-    if indice == 3:
-        cadastro[indice].set_salario(novo_atributo)
 
-question = int(input('Deseja alterar algum atributo? 1 - SIM ou 0 - NÃO: '))
+def alterar(linha,atributo,novo_atributo):
+    if(atributo==0): cadastro[linha].set_nome(novo_atributo)
+    if(atributo==1): cadastro[linha].set_idade(novo_atributo)
+    if(atributo==2): cadastro[linha].set_cargo(novo_atributo)
+    if(atributo==3): cadastro[linha].set_salario(novo_atributo)
+
+mostrar()
+question = int(input('\nDeseja alterar algum atributo? 1 - SIM ou 0 - NÃO: '))
 
 if question == 1:
-    indice = int(input('Qual atributo deseja alterar? 0 - Nome / 1 - Idade / 2 - Cargo / 3 - Salário: '))
-    novo_atributo = input('Qual será o novo atributo? ')
-    alterar(indice, novo_atributo)
+    linha = int(input('\nEm qual Nº da linha da tabela o atributo está? '))
+    atributo = int(input('\nQual atributo deseja alterar? 0 - Nome / 1 - Idade / 2 - Cargo / 3 - Salário: '))
+    novo_atributo = input('\nQual será o novo atributo substituto? ')
+    alterar(linha, atributo, novo_atributo)
     mostrar()
-elif question == 2:
-    print('Ok')
+elif question == 0:
+    mostrar()
 else:
-    print('Opção invalida')
+    print('\nOpção invalida')
+
