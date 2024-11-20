@@ -36,8 +36,14 @@ def alterar(indice,novo_atributo):
     if indice == 3:
         cadastro[indice].set_salario(novo_atributo)
 
-def pergunta_2():
-    atributo = str(input('Qual atributo deseja alterar? '))
-    
-alterar(0, 'Caique')
-mostrar()
+question = int(input('Deseja alterar algum atributo? 1 - SIM ou 0 - NÃO: '))
+
+if question == 1:
+    indice = int(input('Qual atributo deseja alterar? 0 - Nome / 1 - Idade / 2 - Cargo / 3 - Salário: '))
+    novo_atributo = input('Qual será o novo atributo? ')
+    alterar(indice, novo_atributo)
+    mostrar()
+elif question == 2:
+    print('Ok')
+else:
+    print('Opção invalida')
